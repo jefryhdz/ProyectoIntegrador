@@ -13,7 +13,7 @@ import java.awt.Color;
  */
 public class Rey extends Pieza {
 
-    private String nombre = "K";
+    private String nombre = "©";
 
     public Rey() {
         super();

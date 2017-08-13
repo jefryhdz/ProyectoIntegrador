@@ -13,7 +13,7 @@ import java.awt.Color;
  */
 public class Duque extends Pieza {
 
-    private String nombre = "D";
+    private String nombre = "o";
 
     public Duque() {
     }

@@ -98,21 +98,23 @@ public class ProyectoJefryHernandez {
                 tablero[cont][con] = new Duque(Color.white);
                 con++;
                 return tablero(tablero, cont, con);
-            } else if (cont == 5) {
-                if ((con == 0) || (con == 2) || (con == 5) || (con == 13) || (con == 16) || (con == tablero.length - 1)      {
-                    if (con != tablero.length - 1) {
-                        tablero[cont][con] = new Rebelde(Color.BLACK);
-                        con++;
-                        return tablero(tablero, cont, con);
-                    } else {
-                        tablero[cont][con] = new Rebelde(Color.BLACK);
-                        cont++;
-                        con = 0;
-                        return tablero(tablero, cont, con);
-                    }
+            } else {
+                tablero[cont][con] = " ";
+                con++;
+                return tablero(tablero, cont, con);
+
+            }
+        } else if (cont == 5) {
+            if ((con == 0) || (con == 2) || (con == 5) || (con == 13) || (con == 16) || (con == tablero.length - 1)) {
+                if (con == tablero.length - 1) {
+                    tablero[cont][con] = new Rebelde(Color.BLACK);
+                    cont++;
+                    con = 0;
+                    return tablero(tablero, cont, con);
                 } else {
-                    tablero[cont][con] = " ";
+                    tablero[cont][con] = new Rebelde(Color.BLACK);
                     con++;
+
                     return tablero(tablero, cont, con);
                 }
             } else {
@@ -120,6 +122,135 @@ public class ProyectoJefryHernandez {
                 con++;
                 return tablero(tablero, cont, con);
             }
+        } else if (cont == 6) {
+            if ((con == 4) || (con == 14)) {
+                tablero[cont][con] = new Rebelde(Color.BLACK);
+                con++;
+                return tablero(tablero, cont, con);
+            } else if (con == 9) {
+                tablero[cont][con] = new Duque(Color.white);
+                con++;
+                return tablero(tablero, cont, con);
+            } else {
+                tablero[cont][con] = " ";
+                if (con == tablero.length - 1 && cont != tablero.length - 1) {
+                    cont++;
+                    con = 0;
+                } else if (con != tablero.length - 1) {
+                    con++;
+                }
+                return tablero(tablero, cont, con);
+
+            }
+        } else if (cont == 7) {
+            if ((con == 3) || (con == 15)) {
+                tablero[cont][con] = new Rebelde(Color.BLACK);
+                con++;
+                return tablero(tablero, cont, con);
+
+            } else if (con == 8 || con == 10) {
+                tablero[cont][con] = new Duque(Color.white);
+                con++;
+                return tablero(tablero, cont, con);
+            } else {
+                tablero[cont][con] = " ";
+                if (con == tablero.length - 1 && cont != tablero.length - 1) {
+                    cont++;
+                    con = 0;
+                } else if (con != tablero.length - 1) {
+                    con++;
+                }
+                return tablero(tablero, cont, con);
+            }
+        } else if (cont == 8) {
+            if ((con == 4) || (con == 7) || (con == 9) || (con == 11 || (con == 14))) {
+                tablero[cont][con] = new Duque(Color.white);
+                con++;
+                return tablero(tablero, cont, con);
+            } else {
+                tablero[cont][con] = " ";
+                if (con == tablero.length - 1 && cont != tablero.length - 1) {
+                    cont++;
+                    con = 0;
+                } else if (con != tablero.length - 1) {
+                    con++;
+                }
+                return tablero(tablero, cont, con);
+            }
+        } else if (cont == 9) {
+            if (con == 3 || con == 15) {
+                tablero[cont][con] = new Rebelde(Color.BLACK);
+                con++;
+                return tablero(tablero, cont, con);
+            } else if ((con == 6) || (con == 8) || (con == 10) || (con == 12)) {
+                tablero[cont][con] = new Duque(Color.white);
+                con++;
+                return tablero(tablero, cont, con);
+            } else {
+                tablero[cont][con] = " ";
+                if (con == tablero.length - 1 && cont != tablero.length - 1) {
+                    cont++;
+                    con = 0;
+                } else if (con != tablero.length - 1) {
+                    con++;
+                }
+                return tablero(tablero, cont, con);
+            }
+        } else if (cont == 10) {
+            if ((con == 4) || (con == 7) || (con == 9) || (con == 11 || (con == 14))) {
+                tablero[cont][con] = new Duque(Color.white);
+                con++;
+                return tablero(tablero, cont, con);
+            } else {
+                tablero[cont][con] = " ";
+                if (con == tablero.length - 1 && cont != tablero.length - 1) {
+                    cont++;
+                    con = 0;
+                } else if (con != tablero.length - 1) {
+                    con++;
+                }
+                return tablero(tablero, cont, con);
+            }
+        } else if (cont == 11) {
+
+            if ((con == 3) || (con == 15)) {
+                tablero[cont][con] = new Rebelde(Color.BLACK);
+                con++;
+                return tablero(tablero, cont, con);
+
+            } else if (con == 8 || con == 10) {
+                tablero[cont][con] = new Duque(Color.white);
+                con++;
+                return tablero(tablero, cont, con);
+            } else {
+                tablero[cont][con] = " ";
+                if (con == tablero.length - 1 && cont != tablero.length - 1) {
+                    cont++;
+                    con = 0;
+                } else if (con != tablero.length - 1) {
+                    con++;
+                }
+                return tablero(tablero, cont, con);
+            } 
+        } else if (cont==12) {            
+            if ((con == 4) || (con == 14)) {
+                tablero[cont][con] = new Rebelde(Color.BLACK);
+                con++;
+                return tablero(tablero, cont, con);
+            } else if (con == 9) {
+                tablero[cont][con] = new Duque(Color.white);
+                con++;
+                return tablero(tablero, cont, con);
+            } else {
+                tablero[cont][con] = " ";
+                if (con == tablero.length - 1 && cont != tablero.length - 1) {
+                    cont++;
+                    con = 0;
+                } else if (con != tablero.length - 1) {
+                    con++;
+                }
+                return tablero(tablero, cont, con);
+            }            
         } else {
             tablero[cont][con] = " ";
             if (con == tablero.length - 1 && cont != tablero.length - 1) {
@@ -131,5 +262,4 @@ public class ProyectoJefryHernandez {
             return tablero(tablero, cont, con);
         }
     }
-
 }

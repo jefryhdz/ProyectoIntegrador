@@ -13,7 +13,7 @@ import java.awt.Color;
  */
 public class Rebelde extends Pieza {
 
-    private String nombre = "R";
+    private String nombre = "•";
 
     public Rebelde(Color color) {
         super(color);
