@@ -36,4 +36,57 @@ public class Rey extends Pieza {
         return nombre;
     }
 
+    @Override
+    public boolean mover(Pieza p, int a, int b, int x, int y, Object[][] tab) {
+        int resta;
+        if ((a == x && b > y) || (a == x && b < y)) {
+            if (b > y) {
+                resta = b - y;
+                for (int i = 1; i <= resta; i++) {
+                    if (tab[a][b - i] instanceof Pieza) {
+                        return false;
+                    }
+                }
+                return true;
+            } else {
+                resta = y - b;
+                for (int i = 1; i <= resta; i++) {
+                    if (tab[a][b + i] instanceof Pieza) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        } else if ((a > x && b == y) || (a < x && b == y)) {
+            if (a > x) {
+                resta = a - x;
+                for (int i = 1; i <= resta; i++) {
+                    if (tab[a - i][b] instanceof Pieza) {
+                        return false;
+                    }
+                }
+                return true;
+
+            } else {
+                resta = x - a;
+                for (int i = 1; i <= resta; i++) {
+                    if (tab[a + i][b] instanceof Pieza) {
+                        System.out.println(tab[a][y - 1]);
+                        return false;
+                    } else {
+                    }
+                }
+                return true;
+            }
+        } else {
+            return false;
+        }
+
+    }
+
+    @Override
+    public boolean capturar(Pieza p, int a, int b, int x, int y, Object[][] tab) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

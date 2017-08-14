@@ -11,7 +11,7 @@ import java.awt.Color;
  *
  * @author Jefry Hernandez
  */
-public class Pieza {
+public class Pieza implements Complementos{
 
     private Color color;
 
@@ -30,4 +30,15 @@ public class Pieza {
         this.color = color;
     }
 
+    @Override
+    public boolean mover(Pieza p, int a, int b, int x, int y, Object[][] tab) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean capturar(Pieza p, int a, int b, int x, int y, Object[][] tab) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }
