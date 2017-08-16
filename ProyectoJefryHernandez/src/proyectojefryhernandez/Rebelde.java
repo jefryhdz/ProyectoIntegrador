@@ -85,6 +85,41 @@ public class Rebelde extends Pieza {
 
     @Override
     public boolean capturar(Pieza p, int a, int b, int x, int y, Object[][] tab) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (a == x && y > 0) {
+            if (b < y) {
+                if (tab[a][y + 1] instanceof Duque) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                System.out.println(tab[a][y + 1]);
+                if (tab[a][y - 1] instanceof Duque) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            if (x > 0 && b == y) {
+                if (a > x) {
+                    if (tab[x - 1][b] instanceof Duque) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    if (tab[x + 1][y] instanceof Duque) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+                }
+            } else {
+                return false;
+            }
+        }
     }
 }
+

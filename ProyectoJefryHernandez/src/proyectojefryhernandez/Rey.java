@@ -86,7 +86,41 @@ public class Rey extends Pieza {
 
     @Override
     public boolean capturar(Pieza p, int a, int b, int x, int y, Object[][] tab) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (a == x && y > 0) {
+            if (b < y) {
+                if (tab[a][y + 1] instanceof Rebelde && tab[a + 1][y] instanceof Rebelde && tab[a - 1][y] instanceof Rebelde) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+
+                if (tab[a][y - 1] instanceof Rebelde && tab[a + 1][y] instanceof Rebelde && tab[a - 1][y] instanceof Rebelde) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            if (x > 0 && b == y) {
+                if (a > x) {
+                    if (tab[x - 1][b] instanceof Rebelde && tab[x][b + 1] instanceof Rebelde && tab[x][b - 1] instanceof Rebelde) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    if (tab[x + 1][y] instanceof Rebelde && tab[x][b + 1] instanceof Rebelde && tab[x][b - 1] instanceof Rebelde) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+                }
+            } else {
+                return false;
+            }
+        }
     }
 
 }
