@@ -42,7 +42,12 @@ public class ProyectoJefryHernandez {
                             x1 = sc.nextInt();
                             y1 = sc.nextInt();
                             Pieza c = (Pieza) tablero[x][y];
-                            if (c.mover(c, x, y, x1, y1, tablero)) {
+                            if (c.mover(c, x, y, x1, y1, tablero)) {                                
+                                if (c instanceof Rey) {
+                                    if (tablero[x1][y1] instanceof Castillo) {
+                                        jugador2 = true;
+                                    }
+                                }
                                 tablero[x1][y1] = tablero[x][y];
                                 tablero[x][y] = " ";
                                 if (x == x1) {
@@ -153,6 +158,7 @@ public class ProyectoJefryHernandez {
                                                 Pieza t = (Pieza) tablero[x1][y1 - 1];
                                                 if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
                                                     tablero[x1][y1 - 1] = " ";
+                                                    jugador1 =true;
                                                 }
                                             } else if ((tablero[x1][y1 - 1] instanceof Duque)) {
                                                 Pieza t = (Pieza) tablero[x1][y1 - 1];
@@ -166,6 +172,7 @@ public class ProyectoJefryHernandez {
                                                     Pieza t = (Pieza) tablero[x1][y1 + 1];
                                                     if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
                                                         tablero[x1][y1 + 1] = " ";
+                                                        jugador1 =true;
                                                     }
                                                 } else if ((tablero[x1][y1 + 1] instanceof Duque)) {
                                                     Pieza t = (Pieza) tablero[x1][y1 + 1];
@@ -179,6 +186,7 @@ public class ProyectoJefryHernandez {
                                                 Pieza t = (Pieza) tablero[x1 - 1][y1];
                                                 if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
                                                     tablero[x1 - 1][y1] = " ";
+                                                    jugador1 =true;
                                                 }
                                             } else if ((tablero[x - 1][y1] instanceof Duque)) {
                                                 Pieza t = (Pieza) tablero[x1 - 1][y1];
@@ -192,6 +200,7 @@ public class ProyectoJefryHernandez {
                                                     Pieza t = (Pieza) tablero[x1 + 1][y1];
                                                     if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
                                                         tablero[x1 + 1][y1] = " ";
+                                                        jugador1 =true;
                                                     }
                                                 } else if ((tablero[x + 1][y1] instanceof Duque)) {
                                                     Pieza t = (Pieza) tablero[x1 + 1][y1];
@@ -208,6 +217,7 @@ public class ProyectoJefryHernandez {
                                                 Pieza t = (Pieza) tablero[x1][y1 - 1];
                                                 if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
                                                     tablero[x1][y1 - 1] = " ";
+                                                    jugador1 =true;
                                                 }
                                             } else if ((tablero[x1][y1 - 1] instanceof Duque)) {
                                                 Pieza t = (Pieza) tablero[x1][y1 - 1];
@@ -222,6 +232,7 @@ public class ProyectoJefryHernandez {
                                                     Pieza t = (Pieza) tablero[x1][y1 + 1];
                                                     if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
                                                         tablero[x1][y1 + 1] = " ";
+                                                        jugador1 =true;
                                                     }
                                                 } else if ((tablero[x1][y1 + 1] instanceof Duque)) {
                                                     Pieza t = (Pieza) tablero[x1][y1 + 1];
@@ -236,6 +247,7 @@ public class ProyectoJefryHernandez {
                                                 Pieza t = (Pieza) tablero[x1 - 1][y1];
                                                 if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
                                                     tablero[x1 - 1][y1] = " ";
+                                                    jugador1 =true;
                                                 }
                                             } else if ((tablero[x - 1][y1] instanceof Duque)) {
                                                 Pieza t = (Pieza) tablero[x1 - 1][y1];
@@ -250,6 +262,7 @@ public class ProyectoJefryHernandez {
                                                     Pieza t = (Pieza) tablero[x1 + 1][y1];
                                                     if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
                                                         tablero[x1 + 1][y1] = " ";
+                                                        jugador1 =true;
                                                     }
                                                 } else if ((tablero[x + 1][y1] instanceof Duque)) {
                                                     Pieza t = (Pieza) tablero[x1 + 1][y1];
@@ -275,6 +288,10 @@ public class ProyectoJefryHernandez {
                 }
             }
             cont++;
+        }if (jugador1) {
+            System.out.println("Ganador el jugador que llevaba Rebeldes");
+        }else{
+        System.out.println("Ganador el jugador que usaba el Rey");
         }
     }
 
