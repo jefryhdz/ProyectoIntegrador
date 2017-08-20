@@ -14,6 +14,7 @@ import java.awt.Color;
 public class Rey extends Pieza {
 
     private String nombre = "©";
+    private boolean cas = true;
 
     public Rey() {
         super();
@@ -31,9 +32,19 @@ public class Rey extends Pieza {
         this.nombre = nombre;
     }
 
+    
+
     @Override
     public String toString() {
         return nombre;
+    }
+
+    public boolean isCas() {
+        return cas;
+    }
+
+    public void setCas(boolean cas) {
+        this.cas = cas;
     }
 
     @Override
@@ -101,26 +112,34 @@ public class Rey extends Pieza {
                     return false;
                 }
             }
-        } else {
-            if (x > 0 && b == y) {
-                if (a > x) {
-                    if (tab[x - 1][b] instanceof Rebelde && tab[x][b + 1] instanceof Rebelde && tab[x][b - 1] instanceof Rebelde) {
-                        return true;
-                    } else {
-                        return false;
-                    }
+        } else if (x > 0 && b == y) {
+            if (a > x) {
+                if (tab[x - 1][b] instanceof Rebelde && tab[x][b + 1] instanceof Rebelde && tab[x][b - 1] instanceof Rebelde) {
+                    return true;
                 } else {
-                    if (tab[x + 1][y] instanceof Rebelde && tab[x][b + 1] instanceof Rebelde && tab[x][b - 1] instanceof Rebelde) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-
+                    return false;
                 }
+            } else {
+                if (tab[x + 1][y] instanceof Rebelde && tab[x][b + 1] instanceof Rebelde && tab[x][b - 1] instanceof Rebelde) {
+                    return true;
+                } else {
+                    return false;
+                }
+
+            }
+        } else if (x == 0) {
+            if (tab[x + 1][b] instanceof Rebelde && tab[x][b + 1] instanceof Rebelde && tab[x][b - 1] instanceof Rebelde) {
+                return true;
             } else {
                 return false;
             }
+        } else if (b == tab.length - 1) {
+            if (tab[x][b - 1] instanceof Rebelde && tab[x + 1][b] instanceof Rebelde && tab[x - 1][b] instanceof Rebelde) {
+                return true;
+            }
         }
+        return false;
+
     }
 
 }

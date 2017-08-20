@@ -42,7 +42,7 @@ public class Duque extends Pieza {
             if (b > y) {
                 resta = b - y;
                 for (int i = 1; i <= resta; i++) {
-                    if (tab[a][b - i] instanceof Pieza) {
+                    if (tab[a][b - i] instanceof Pieza||tab[a][b - i] instanceof Castillo) {
                         return false;
                     }
                 }
@@ -50,7 +50,7 @@ public class Duque extends Pieza {
             } else {
                 resta = y - b;
                 for (int i = 1; i <= resta; i++) {
-                    if (tab[a][b + i] instanceof Pieza) {
+                    if (tab[a][b + i] instanceof Pieza||tab[a][b + i] instanceof Castillo) {
                         return false;
                     }
                 }
@@ -60,7 +60,7 @@ public class Duque extends Pieza {
             if (a > x) {
                 resta = a - x;
                 for (int i = 1; i <= resta; i++) {
-                    if (tab[a - i][b] instanceof Pieza) {
+                    if (tab[a - i][b] instanceof Pieza||tab[a - i][b] instanceof Castillo) {
                         return false;
                     }
                 }
@@ -69,8 +69,7 @@ public class Duque extends Pieza {
             } else {
                 resta = x - a;
                 for (int i = 1; i <= resta; i++) {
-                    if (tab[a + i][b] instanceof Pieza) {
-                        System.out.println(tab[a][y - 1]);
+                    if (tab[a + i][b] instanceof Pieza||tab[a + i][b] instanceof Castillo) {                      
                         return false;
                     } else {
                     }

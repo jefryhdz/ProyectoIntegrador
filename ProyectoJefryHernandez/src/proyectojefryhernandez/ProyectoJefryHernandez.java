@@ -42,7 +42,7 @@ public class ProyectoJefryHernandez {
                             x1 = sc.nextInt();
                             y1 = sc.nextInt();
                             Pieza c = (Pieza) tablero[x][y];
-                            if (c.mover(c, x, y, x1, y1, tablero)) {                                
+                            if (c.mover(c, x, y, x1, y1, tablero)) {
                                 if (c instanceof Rey) {
                                     if (tablero[x1][y1] instanceof Castillo) {
                                         jugador2 = true;
@@ -52,6 +52,71 @@ public class ProyectoJefryHernandez {
                                 tablero[x][y] = " ";
                                 if (x == x1) {
                                     if (y != y1) {
+                                        if (y1 > 0) {
+                                            if (tablero[x1][y1 - 1] instanceof Pieza) {
+                                                if ((tablero[x1][y1 - 1] instanceof Rebelde)) {
+                                                    Pieza t = (Pieza) tablero[x1][y1 - 1];
+                                                    if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
+                                                        tablero[x1][y1 - 1] = " ";
+                                                    }
+                                                }
+                                            } else if (y1 != tablero.length - 1) {
+                                                if (tablero[x1][y1 + 1] instanceof Pieza) {
+                                                    if ((tablero[x1][y1 + 1] instanceof Rebelde)) {
+                                                        Pieza t = (Pieza) tablero[x1][y1 + 1];
+                                                        if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
+                                                            tablero[x1][y1 + 1] = " ";
+                                                        }
+                                                    }
+                                                } else if (x1 > 0 && tablero[x1 - 1][y1] instanceof Pieza) {
+                                                    if ((tablero[x - 1][y1] instanceof Rebelde)) {
+                                                        Pieza t = (Pieza) tablero[x1 - 1][y1];
+                                                        if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
+                                                            tablero[x1 - 1][y1] = " ";
+                                                        }
+                                                    }
+                                                } else if (x1 != tablero.length - 1) {
+                                                    if (tablero[x1 + 1][y1] instanceof Pieza) {
+                                                        if ((tablero[x + 1][y1] instanceof Rebelde)) {
+                                                            Pieza t = (Pieza) tablero[x1 + 1][y1];
+                                                            if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
+                                                                tablero[x1 + 1][y1] = " ";
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            if (x1 == 0) {
+                                                if (y1 != tablero.length - 1) {
+                                                    if (tablero[x1][y1 + 1] instanceof Pieza) {
+                                                        if ((tablero[x1][y1 + 1] instanceof Rebelde)) {
+                                                            Pieza t = (Pieza) tablero[x1][y1 + 1];
+                                                            if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
+                                                                tablero[x1][y1 + 1] = " ";
+                                                            }
+                                                        }
+                                                    } else if (tablero[x1 - 1][y1] instanceof Pieza) {
+                                                        if ((tablero[x - 1][y1] instanceof Rebelde)) {
+                                                            Pieza t = (Pieza) tablero[x1 - 1][y1];
+                                                            if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
+                                                                tablero[x1 - 1][y1] = " ";
+                                                            }
+                                                        }
+                                                    } else if (x1 != tablero.length - 1) {
+                                                        if (tablero[x1 + 1][y1] instanceof Pieza) {
+                                                            if ((tablero[x + 1][y1] instanceof Rebelde)) {
+                                                                Pieza t = (Pieza) tablero[x1 + 1][y1];
+                                                                if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
+                                                                    tablero[x1 + 1][y1] = " ";
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    } else if (y == y1) {
                                         if (tablero[x1][y1 - 1] instanceof Pieza) {
                                             if ((tablero[x1][y1 - 1] instanceof Rebelde)) {
                                                 Pieza t = (Pieza) tablero[x1][y1 - 1];
@@ -59,7 +124,8 @@ public class ProyectoJefryHernandez {
                                                     tablero[x1][y1 - 1] = " ";
                                                 }
                                             }
-                                        } else if (y1 != tablero.length - 1) {
+                                        }
+                                        if (y1 != tablero.length - 1) {
                                             if (tablero[x1][y1 + 1] instanceof Pieza) {
                                                 if ((tablero[x1][y1 + 1] instanceof Rebelde)) {
                                                     Pieza t = (Pieza) tablero[x1][y1 + 1];
@@ -67,58 +133,23 @@ public class ProyectoJefryHernandez {
                                                         tablero[x1][y1 + 1] = " ";
                                                     }
                                                 }
-                                            } else if (tablero[x1 - 1][y1] instanceof Pieza) {
-                                                if ((tablero[x - 1][y1] instanceof Rebelde)) {
-                                                    Pieza t = (Pieza) tablero[x1 - 1][y1];
-                                                    if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
-                                                        tablero[x1 - 1][y1] = " ";
+                                            }
+                                        }
+                                        if (tablero[x1 - 1][y1] instanceof Pieza) {
+                                            if ((tablero[x - 1][y1] instanceof Rebelde)) {
+                                                Pieza t = (Pieza) tablero[x1 - 1][y1];
+                                                if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
+                                                    tablero[x1 - 1][y1] = " ";
+                                                }
+                                            }
+                                        }
+                                        if (x1 != tablero.length - 1) {
+                                            if (tablero[x1 + 1][y1] instanceof Pieza) {
+                                                if ((tablero[x1 + 1][y1] instanceof Rebelde)) {
+                                                    Pieza t = (Pieza) tablero[x1 + 1][y1];
+                                                    if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
+                                                        tablero[x1 + 1][y1] = " ";
                                                     }
-                                                }
-                                            } else if (x1 != tablero.length - 1) {
-                                                if (tablero[x1 + 1][y1] instanceof Pieza) {
-                                                    if ((tablero[x + 1][y1] instanceof Rebelde)) {
-                                                        Pieza t = (Pieza) tablero[x1 + 1][y1];
-                                                        if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
-                                                            tablero[x1 + 1][y1] = " ";
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                } else if (y == y1) {
-                                    if (tablero[x1][y1 - 1] instanceof Pieza) {
-                                        if ((tablero[x1][y1 - 1] instanceof Rebelde)) {
-                                            Pieza t = (Pieza) tablero[x1][y1 - 1];
-                                            if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
-                                                tablero[x1][y1 - 1] = " ";
-                                            }
-                                        }
-                                    }
-                                    if (y1 != tablero.length - 1) {
-                                        if (tablero[x1][y1 + 1] instanceof Pieza) {
-                                            if ((tablero[x1][y1 + 1] instanceof Rebelde)) {
-                                                Pieza t = (Pieza) tablero[x1][y1 + 1];
-                                                if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
-                                                    tablero[x1][y1 + 1] = " ";
-                                                }
-                                            }
-                                        }
-                                    }
-                                    if (tablero[x1 - 1][y1] instanceof Pieza) {
-                                        if ((tablero[x - 1][y1] instanceof Rebelde)) {
-                                            Pieza t = (Pieza) tablero[x1 - 1][y1];
-                                            if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
-                                                tablero[x1 - 1][y1] = " ";
-                                            }
-                                        }
-                                    }
-                                    if (x1 != tablero.length - 1) {
-                                        if (tablero[x1 + 1][y1] instanceof Pieza) {
-                                            if ((tablero[x1 + 1][y1] instanceof Rebelde)) {
-                                                Pieza t = (Pieza) tablero[x1 + 1][y1];
-                                                if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
-                                                    tablero[x1 + 1][y1] = " ";
                                                 }
                                             }
                                         }
@@ -158,12 +189,16 @@ public class ProyectoJefryHernandez {
                                                 Pieza t = (Pieza) tablero[x1][y1 - 1];
                                                 if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
                                                     tablero[x1][y1 - 1] = " ";
-                                                    jugador1 =true;
+                                                    jugador1 = true;
                                                 }
                                             } else if ((tablero[x1][y1 - 1] instanceof Duque)) {
                                                 Pieza t = (Pieza) tablero[x1][y1 - 1];
-                                                if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
-                                                    tablero[x1][y1 - 1] = " ";
+                                                if (new Pieza().duqueinmortal(x1, y1 - 1, tablero)) {
+
+                                                } else {
+                                                    if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
+                                                        tablero[x1][y1 - 1] = " ";
+                                                    }
                                                 }
                                             }
                                         } else if (y1 != tablero.length - 1) {
@@ -172,26 +207,36 @@ public class ProyectoJefryHernandez {
                                                     Pieza t = (Pieza) tablero[x1][y1 + 1];
                                                     if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
                                                         tablero[x1][y1 + 1] = " ";
-                                                        jugador1 =true;
+                                                        jugador1 = true;
                                                     }
                                                 } else if ((tablero[x1][y1 + 1] instanceof Duque)) {
                                                     Pieza t = (Pieza) tablero[x1][y1 + 1];
-                                                    if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
-                                                        tablero[x1][y1 + 1] = " ";
+                                                    if (new Pieza().duqueinmortal(x1, y1 + 1, tablero)) {
+
+                                                    } else {
+                                                        if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
+                                                            tablero[x1][y1 + 1] = " ";
+                                                        }
                                                     }
                                                 }
                                             }
-                                        } else if (tablero[x1 - 1][y1] instanceof Pieza) {
-                                            if ((tablero[x1 - 1][y1] instanceof Rey)) {
-                                                Pieza t = (Pieza) tablero[x1 - 1][y1];
-                                                if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
-                                                    tablero[x1 - 1][y1] = " ";
-                                                    jugador1 =true;
-                                                }
-                                            } else if ((tablero[x - 1][y1] instanceof Duque)) {
-                                                Pieza t = (Pieza) tablero[x1 - 1][y1];
-                                                if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
-                                                    tablero[x1 - 1][y1] = " ";
+                                        } else if (x1 > 0) {
+                                            if (tablero[x1 - 1][y1] instanceof Pieza) {
+                                                if ((tablero[x1 - 1][y1] instanceof Rey)) {
+                                                    Pieza t = (Pieza) tablero[x1 - 1][y1];
+                                                    if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
+                                                        tablero[x1 - 1][y1] = " ";
+                                                        jugador1 = true;
+                                                    }
+                                                } else if ((tablero[x1 - 1][y1] instanceof Duque)) {
+                                                    Pieza t = (Pieza) tablero[x1 - 1][y1];
+                                                    if (new Pieza().duqueinmortal(x1 - 1, y1, tablero)) {
+
+                                                    } else {
+                                                        if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
+                                                            tablero[x1 - 1][y1] = " ";
+                                                        }
+                                                    }
                                                 }
                                             }
                                         } else if (x1 != tablero.length - 1) {
@@ -200,72 +245,90 @@ public class ProyectoJefryHernandez {
                                                     Pieza t = (Pieza) tablero[x1 + 1][y1];
                                                     if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
                                                         tablero[x1 + 1][y1] = " ";
-                                                        jugador1 =true;
+                                                        jugador1 = true;
                                                     }
-                                                } else if ((tablero[x + 1][y1] instanceof Duque)) {
+                                                } else if ((tablero[x1 + 1][y1] instanceof Duque)) {
                                                     Pieza t = (Pieza) tablero[x1 + 1][y1];
-                                                    if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
-                                                        tablero[x1 + 1][y1] = " ";
-                                                    }
-                                                }
-                                            }
-                                        }
+                                                    if (new Pieza().duqueinmortal(x1 + 1, y1, tablero)) {
 
-                                    } else if (y == y1) {
-                                        if (tablero[x1][y1 - 1] instanceof Pieza) {
-                                            if ((tablero[x1][y1 - 1] instanceof Rey)) {
-                                                Pieza t = (Pieza) tablero[x1][y1 - 1];
+                                                    } else {
+                                                        if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
+                                                            tablero[x1 + 1][y1] = " ";
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else if (y == y1) {
+                                    if (tablero[x1][y1 - 1] instanceof Pieza) {
+                                        if ((tablero[x1][y1 - 1] instanceof Rey)) {
+                                            Pieza t = (Pieza) tablero[x1][y1 - 1];
+                                            if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
+                                                tablero[x1][y1 - 1] = " ";
+                                                jugador1 = true;
+                                            }
+                                        } else if ((tablero[x1][y1 - 1] instanceof Duque)) {
+                                            Pieza t = (Pieza) tablero[x1][y1 - 1];
+                                            if (new Pieza().duqueinmortal(x1, y1 - 1, tablero)) {
+
+                                            } else {
                                                 if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
                                                     tablero[x1][y1 - 1] = " ";
-                                                    jugador1 =true;
-                                                }
-                                            } else if ((tablero[x1][y1 - 1] instanceof Duque)) {
-                                                Pieza t = (Pieza) tablero[x1][y1 - 1];
-                                                if (t.capturar(t, x1, y1, x1, y1 - 1, tablero)) {
-                                                    tablero[x1][y1 - 1] = " ";
                                                 }
                                             }
                                         }
-                                        if (y1 != tablero.length - 1) {
-                                            if (tablero[x1][y1 + 1] instanceof Pieza) {
-                                                if ((tablero[x1][y1 + 1] instanceof Rey)) {
-                                                    Pieza t = (Pieza) tablero[x1][y1 + 1];
+                                    }
+                                    if (y1 != tablero.length - 1) {
+                                        if (tablero[x1][y1 + 1] instanceof Pieza) {
+                                            if ((tablero[x1][y1 + 1] instanceof Rey)) {
+                                                Pieza t = (Pieza) tablero[x1][y1 + 1];
+                                                if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
+                                                    tablero[x1][y1 + 1] = " ";
+                                                    jugador1 = true;
+                                                }
+                                            } else if ((tablero[x1][y1 + 1] instanceof Duque)) {
+                                                Pieza t = (Pieza) tablero[x1][y1 + 1];
+                                                if (new Pieza().duqueinmortal(x1, y1 + 1, tablero)) {
+
+                                                } else {
                                                     if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
                                                         tablero[x1][y1 + 1] = " ";
-                                                        jugador1 =true;
-                                                    }
-                                                } else if ((tablero[x1][y1 + 1] instanceof Duque)) {
-                                                    Pieza t = (Pieza) tablero[x1][y1 + 1];
-                                                    if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
-                                                        tablero[x1][y1 + 1] = " ";
                                                     }
                                                 }
                                             }
                                         }
-                                        if (tablero[x1 - 1][y1] instanceof Pieza) {
-                                            if ((tablero[x1 - 1][y1] instanceof Rey)) {
-                                                Pieza t = (Pieza) tablero[x1 - 1][y1];
-                                                if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
-                                                    tablero[x1 - 1][y1] = " ";
-                                                    jugador1 =true;
-                                                }
-                                            } else if ((tablero[x - 1][y1] instanceof Duque)) {
-                                                Pieza t = (Pieza) tablero[x1 - 1][y1];
+                                    }
+                                    if (tablero[x1 - 1][y1] instanceof Pieza) {
+                                        if ((tablero[x1 - 1][y1] instanceof Rey)) {
+                                            Pieza t = (Pieza) tablero[x1 - 1][y1];
+                                            if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
+                                                tablero[x1 - 1][y1] = " ";
+                                                jugador1 = true;
+                                            }
+                                        } else if ((tablero[x1 - 1][y1] instanceof Duque)) {
+                                            Pieza t = (Pieza) tablero[x1 - 1][y1];
+                                            if (new Pieza().duqueinmortal(1 - 1, y1, tablero)) {
+                                            } else {
                                                 if (t.capturar(t, x1, y1, x1 - 1, y1, tablero)) {
                                                     tablero[x1 - 1][y1] = " ";
                                                 }
                                             }
                                         }
-                                        if (x1 != tablero.length - 1) {
-                                            if (tablero[x1 + 1][y1] instanceof Pieza) {
-                                                if ((tablero[x1 + 1][y1] instanceof Rey)) {
-                                                    Pieza t = (Pieza) tablero[x1 + 1][y1];
-                                                    if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
-                                                        tablero[x1 + 1][y1] = " ";
-                                                        jugador1 =true;
-                                                    }
-                                                } else if ((tablero[x + 1][y1] instanceof Duque)) {
-                                                    Pieza t = (Pieza) tablero[x1 + 1][y1];
+                                    }
+                                    if (x1 != tablero.length - 1) {
+                                        if (tablero[x1 + 1][y1] instanceof Pieza) {
+                                            if ((tablero[x1 + 1][y1] instanceof Rey)) {
+                                                Pieza t = (Pieza) tablero[x1 + 1][y1];
+                                                if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
+                                                    tablero[x1 + 1][y1] = " ";
+                                                    jugador1 = true;
+                                                }
+                                            } else if ((tablero[x1 + 1][y1] instanceof Duque)) {
+                                                Pieza t = (Pieza) tablero[x1 + 1][y1];
+                                                if (new Pieza().duqueinmortal(x1 + 1, y1, tablero)) {
+
+                                                } else {
                                                     if (t.capturar(t, x1, y1, x1 + 1, y1, tablero)) {
                                                         tablero[x1 + 1][y1] = " ";
                                                     }
@@ -274,6 +337,7 @@ public class ProyectoJefryHernandez {
                                         }
                                     }
                                 }
+
                                 juego = true;
 
                             } else {
@@ -288,10 +352,11 @@ public class ProyectoJefryHernandez {
                 }
             }
             cont++;
-        }if (jugador1) {
+        }
+        if (jugador1) {
             System.out.println("Ganador el jugador que llevaba Rebeldes");
-        }else{
-        System.out.println("Ganador el jugador que usaba el Rey");
+        } else {
+            System.out.println("Ganador el jugador que usaba el Rey");
         }
     }
 
@@ -383,7 +448,7 @@ public class ProyectoJefryHernandez {
                 con++;
                 return tablero(tablero, cont, con);
             }
-        } else if (cont == 6) {
+        }/* else if (cont == 6) {
             if ((con == 4) || (con == 14)) {
                 tablero[cont][con] = new Rebelde(Color.BLACK);
                 con++;
@@ -423,7 +488,7 @@ public class ProyectoJefryHernandez {
                 }
                 return tablero(tablero, cont, con);
             }
-        } else if (cont == 8) {
+        }*/ else if (cont == 8) {
             if ((con == 4) || (con == 7) || (con == 9) || (con == 11 || (con == 14))) {
                 tablero[cont][con] = new Duque(Color.white);
                 con++;

@@ -42,7 +42,7 @@ public class Rebelde extends Pieza {
             if (b > y) {
                 resta = b - y;
                 for (int i = 1; i <= resta; i++) {
-                    if (tab[a][b - i] instanceof Pieza) {
+                    if (tab[a][b - i] instanceof Pieza||tab[a][b - i] instanceof Castillo) {
                         return false;
                     }
                 }
@@ -50,7 +50,7 @@ public class Rebelde extends Pieza {
             } else {
                 resta = y - b;
                 for (int i = 1; i <= resta; i++) {
-                    if (tab[a][b + i] instanceof Pieza) {
+                    if (tab[a][b + i] instanceof Pieza||tab[a][b + i] instanceof Castillo) {
                         return false;
                     }
                 }
@@ -60,7 +60,7 @@ public class Rebelde extends Pieza {
             if (a > x) {
                 resta = a - x;
                 for (int i = 1; i <= resta; i++) {
-                    if (tab[a - i][b] instanceof Pieza) {
+                    if (tab[a - i][b] instanceof Pieza||tab[a - i][b] instanceof Castillo) {
                         return false;
                     }
                 }
@@ -69,8 +69,7 @@ public class Rebelde extends Pieza {
             } else {
                 resta = x - a;
                 for (int i = 1; i <= resta; i++) {
-                    if (tab[a + i][b] instanceof Pieza) {
-                        System.out.println(tab[a][y - 1]);
+                    if (tab[a + i][b] instanceof Pieza||tab[a + i][b] instanceof Castillo) {                        
                         return false;
                     } else {
                     }
@@ -87,14 +86,14 @@ public class Rebelde extends Pieza {
     public boolean capturar(Pieza p, int a, int b, int x, int y, Object[][] tab) {
         if (a == x && y > 0) {
             if (b < y) {
-                if (tab[a][y + 1] instanceof Duque) {
+                if (tab[a][y + 1] instanceof Duque||tab[a][y + 1] instanceof Rey) {
                     return true;
                 } else {
                     return false;
                 }
             } else {
                 System.out.println(tab[a][y + 1]);
-                if (tab[a][y - 1] instanceof Duque) {
+                if (tab[a][y - 1] instanceof Duque||tab[a][y - 1] instanceof Rey) {
                     return true;
                 } else {
                     return false;
@@ -103,13 +102,13 @@ public class Rebelde extends Pieza {
         } else {
             if (x > 0 && b == y) {
                 if (a > x) {
-                    if (tab[x - 1][b] instanceof Duque) {
+                    if (tab[x - 1][b] instanceof Duque||tab[x - 1][b] instanceof Rey) {
                         return true;
                     } else {
                         return false;
                     }
                 } else {
-                    if (tab[x + 1][y] instanceof Duque) {
+                    if (tab[x + 1][y] instanceof Duque||tab[x + 1][y] instanceof Rey) {
                         return true;
                     } else {
                         return false;
