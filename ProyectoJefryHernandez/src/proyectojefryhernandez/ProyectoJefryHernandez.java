@@ -7,6 +7,7 @@ package proyectojefryhernandez;
 
 import java.awt.Color;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
@@ -44,12 +45,28 @@ public class ProyectoJefryHernandez {
                             Pieza c = (Pieza) tablero[x][y];
                             if (c.mover(c, x, y, x1, y1, tablero)) {
                                 if (c instanceof Rey) {
+                                    if (x == 9 && y == 9) {
+                                        ((Rey) c).setCas(false);
+                                        tablero[x1][y1] = tablero[x][y];
+                                        tablero[x][y] = " ";
+                                    }
+                                    if (x1 == 9 && y1 == 9) {
+                                        if (((Rey) c).isCas()) {
+                                            tablero[x1][y1] = tablero[x][y];
+                                            tablero[x][y] = " ";
+
+                                        } else {
+                                            System.out.println("No se puede posicionar en el castillo del centro");
+                                        }
+                                    }
                                     if (tablero[x1][y1] instanceof Castillo) {
                                         jugador2 = true;
+                                    } else {
+                                        tablero[x1][y1] = tablero[x][y];
+                                        tablero[x][y] = " ";
+
                                     }
                                 }
-                                tablero[x1][y1] = tablero[x][y];
-                                tablero[x][y] = " ";
                                 if (x == x1) {
                                     if (y != y1) {
                                         if (y1 > 0) {
