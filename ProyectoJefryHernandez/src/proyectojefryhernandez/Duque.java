@@ -84,7 +84,7 @@ public class Duque extends Pieza {
 
     @Override
     public boolean capturar(Pieza p, int a, int b, int x, int y, Object[][] tab) {
-        if (a == x && y > 0) {                   
+      if (a == x && y > 0&&y<tab.length) {
             if (b < y) {
                 if (tab[a][y + 1] instanceof Rebelde) {
                     return true;
@@ -92,15 +92,15 @@ public class Duque extends Pieza {
                     return false;
                 }
             } else {
-                System.out.println(tab[a][y+1]);
-                if (tab[a][y - 1] instanceof Rebelde) {                    
+                System.out.println(tab[a][y + 1]);
+                if (tab[a][y - 1] instanceof Rebelde) {
                     return true;
                 } else {
                     return false;
                 }
             }
         } else {
-            if (x > 0&&b==y) {
+            if (x > 0 && b == y&&x<tab.length) {
                 if (a > x) {
                     if (tab[x - 1][b] instanceof Rebelde) {
                         return true;

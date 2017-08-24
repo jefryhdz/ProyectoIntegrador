@@ -32,8 +32,6 @@ public class Rey extends Pieza {
         this.nombre = nombre;
     }
 
-    
-
     @Override
     public String toString() {
         return nombre;
@@ -97,9 +95,9 @@ public class Rey extends Pieza {
 
     @Override
     public boolean capturar(Pieza p, int a, int b, int x, int y, Object[][] tab) {
-        if (a == x && y > 0) {
+        if (a == x && y > 0 && a > 0 && y < tab.length-1 && x < tab.length-1) {
             if (b < y) {
-                if (tab[a][y + 1] instanceof Rebelde && tab[a + 1][y] instanceof Rebelde && tab[a - 1][y] instanceof Rebelde) {
+                if (tab[a][y + 1] instanceof Rebelde && tab[a + 1][y - 1] instanceof Rebelde && tab[a - 1][y - 1] instanceof Rebelde) {
                     return true;
                 } else {
                     return false;
@@ -112,7 +110,7 @@ public class Rey extends Pieza {
                     return false;
                 }
             }
-        } else if (x > 0 && b == y) {
+        } else if ((x > 0) && (b == y )&& (y > 0) &&( y < tab.length-1) && (x < tab.length-1)) {
             if (a > x) {
                 if (tab[x - 1][b] instanceof Rebelde && tab[x][b + 1] instanceof Rebelde && tab[x][b - 1] instanceof Rebelde) {
                     return true;
@@ -125,21 +123,34 @@ public class Rey extends Pieza {
                 } else {
                     return false;
                 }
-
             }
         } else if (x == 0) {
-            if (tab[x + 1][b] instanceof Rebelde && tab[x][b + 1] instanceof Rebelde && tab[x][b - 1] instanceof Rebelde) {
+            if (tab[x + 1][b] instanceof Rebelde && tab[x][y + 1] instanceof Rebelde && tab[x][y - 1] instanceof Rebelde) {
                 return true;
             } else {
                 return false;
             }
-        } else if (b == tab.length - 1) {
-            if (tab[x][b - 1] instanceof Rebelde && tab[x + 1][b] instanceof Rebelde && tab[x - 1][b] instanceof Rebelde) {
+        } else if (y == tab.length - 1) {
+            if (tab[x][y - 1] instanceof Rebelde && tab[x + 1][y] instanceof Rebelde && tab[x - 1][y] instanceof Rebelde) {
                 return true;
+            } else {
+                return false;
             }
+        } else if (y == 0) {
+            if ((tab[x - 1][y] instanceof Rebelde) && (tab[x + 1][y] instanceof Rebelde) && tab[x][y + 1] instanceof Rebelde) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (x == tab.length - 1) {
+            if (tab[x][y - 1] instanceof Rebelde && tab[x][y + 1] instanceof Rebelde && tab[x - 1][y] instanceof Rebelde) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } else {
+            return false;
         }
-        return false;
-
     }
-
 }

@@ -84,7 +84,7 @@ public class Rebelde extends Pieza {
 
     @Override
     public boolean capturar(Pieza p, int a, int b, int x, int y, Object[][] tab) {
-        if (a == x && y > 0) {
+        if (a == x && y > 0&&y<tab.length) {
             if (b < y) {
                 if (tab[a][y + 1] instanceof Duque||tab[a][y + 1] instanceof Rey) {
                     return true;
@@ -100,7 +100,7 @@ public class Rebelde extends Pieza {
                 }
             }
         } else {
-            if (x > 0 && b == y) {
+            if (x > 0 && b == y&&x<tab.length) {
                 if (a > x) {
                     if (tab[x - 1][b] instanceof Duque||tab[x - 1][b] instanceof Rey) {
                         return true;
