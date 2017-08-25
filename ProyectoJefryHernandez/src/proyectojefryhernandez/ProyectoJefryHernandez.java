@@ -28,7 +28,7 @@ public class ProyectoJefryHernandez {
         boolean jugador2 = false;
         boolean juego;
         boolean castillo = false;
-        int cont = 1, x=0 , y=0 , x1=0 , y1=0;
+        int cont = 1, x = 0, y = 0, x1 = 0, y1 = 0;
         while (jugador1 == false && jugador2 == false) {
             if (cont % 2 == 0) {
                 juego = false;
@@ -537,7 +537,7 @@ public class ProyectoJefryHernandez {
                 }
                 return tablero(tablero, cont, con);
             }
-        } /*else if (cont == 9) {
+        } else if (cont == 9) {
             if (con == 3 || con == 15) {
                 tablero[cont][con] = new Rebelde(Color.BLACK);
                 con++;
@@ -611,7 +611,7 @@ public class ProyectoJefryHernandez {
                 }
                 return tablero(tablero, cont, con);
             }
-        } */ else if (cont == 13) {
+        } else if (cont == 13) {
             if ((con == 0) || (con == 2) || (con == 5) || (con == 13) || (con == 16) || (con == tablero.length - 1)) {
                 if (con == tablero.length - 1) {
                     tablero[cont][con] = new Rebelde(Color.BLACK);
@@ -707,7 +707,7 @@ public class ProyectoJefryHernandez {
     public static boolean isNumeric(String cadena, String dos) {
         try {
             Integer.parseInt(cadena);
-            Integer.parseInt(dos);            
+            Integer.parseInt(dos);
             return true;
         } catch (NumberFormatException nfe) {
             return false;
