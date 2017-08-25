@@ -28,21 +28,33 @@ public class ProyectoJefryHernandez {
         boolean jugador2 = false;
         boolean juego;
         boolean castillo = false;
-        int cont = 1, x, y, x1, y1;
+        int cont = 1, x=0 , y=0 , x1=0 , y1=0;
         while (jugador1 == false && jugador2 == false) {
             if (cont % 2 == 0) {
                 juego = false;
                 while (juego == false) {
                     castillo = false;
-                    System.out.println("Jugador del rey");
-                    System.out.println("Ingrese las coordenadas de la pieza que desea mover:");
-                    x = sc.nextInt();
-                    y = sc.nextInt();
+                    do {
+                        System.out.println("Jugador del rey");
+                        System.out.println("Ingrese las coordenadas de la pieza que desea mover:");
+                        String ex = sc.next();
+                        String ey = sc.next();
+                        if (isNumeric(ex, ey)) {
+                            x = Integer.parseInt(ex);
+                            y = Integer.parseInt(ey);
+                        }
+                    } while (x < 0 && y < 0 && x > 18 && y > 18);
                     if (tablero[x][y] instanceof Pieza) {
                         if ((tablero[x][y] instanceof Duque) || (tablero[x][y] instanceof Rey)) {
-                            System.out.println("Ingrese la posicion que desea moverse: ");
-                            x1 = sc.nextInt();
-                            y1 = sc.nextInt();
+                            do {
+                                System.out.println("Ingrese la posicion que desea moverse: ");
+                                String ex1 = sc.next();
+                                String ey1 = sc.next();
+                                if (isNumeric(ex1, ey1)) {
+                                    x1 = Integer.parseInt(ex1);
+                                    y1 = Integer.parseInt(ey1);
+                                }
+                            } while (x1 < 0 && y1 < 0 && x1 > 18 && y1 > 18);
                             Pieza c = (Pieza) tablero[x][y];
                             if (c.mover(c, x, y, x1, y1, tablero)) {
                                 if (c instanceof Rey) {
@@ -60,6 +72,8 @@ public class ProyectoJefryHernandez {
                                             castillo = true;
                                         }
                                     } else if (tablero[x1][y1] instanceof Castillo) {
+                                        tablero[x1][y1] = tablero[x][y];
+                                        tablero[x][y] = " ";
                                         jugador2 = true;
                                     } else {
                                         tablero[x1][y1] = tablero[x][y];
@@ -111,7 +125,7 @@ public class ProyectoJefryHernandez {
                                             }
                                         }
                                     }
-                                } else if (y == y1&&y1>0) {
+                                } else if (y == y1 && y1 > 0) {
                                     if (tablero[x1][y1 - 1] instanceof Pieza) {
                                         if ((tablero[x1][y1 - 1] instanceof Rebelde)) {
                                             Pieza t = (Pieza) tablero[x1][y1 - 1];
@@ -169,15 +183,27 @@ public class ProyectoJefryHernandez {
             } else {
                 juego = false;
                 while (juego == false) {
-                    System.out.println("Jugador de los Rebeldes");
-                    System.out.println("Ingrese las coordenadas de la pieza que desea mover:");
-                    x = sc.nextInt();
-                    y = sc.nextInt();
+                    do {
+                        System.out.println("Jugador de los Rebeldes");
+                        System.out.println("Ingrese las coordenadas de la pieza que desea mover:");
+                        String ex = sc.next();
+                        String ey = sc.next();
+                        if (isNumeric(ey, ey)) {
+                            x = Integer.parseInt(ex);
+                            y = Integer.parseInt(ey);
+                        }
+                    } while (x < 0 && y < 0 && x > 18 && y > 18);
                     if (tablero[x][y] instanceof Pieza) {
                         if (tablero[x][y] instanceof Rebelde) {
-                            System.out.println("Ingrese la posicion que desea moverse: ");
-                            x1 = sc.nextInt();
-                            y1 = sc.nextInt();
+                            do {
+                                System.out.println("Ingrese la posicion que desea moverse: ");
+                                String ex1 = sc.next();
+                                String ey1 = sc.next();
+                                if (isNumeric(ey1, ey1)) {
+                                    x1 = Integer.parseInt(ex1);
+                                    y1 = Integer.parseInt(ey1);
+                                }
+                            } while (x1 < 0 && y1 < 0 && x1 > 18 && y1 > 18);
                             Pieza c = (Pieza) tablero[x][y];
                             if (c.mover(c, x, y, x1, y1, tablero)) {
                                 tablero[x1][y1] = tablero[x][y];
@@ -585,7 +611,7 @@ public class ProyectoJefryHernandez {
                 }
                 return tablero(tablero, cont, con);
             }
-        } */else if (cont == 13) {
+        } */ else if (cont == 13) {
             if ((con == 0) || (con == 2) || (con == 5) || (con == 13) || (con == 16) || (con == tablero.length - 1)) {
                 if (con == tablero.length - 1) {
                     tablero[cont][con] = new Rebelde(Color.BLACK);
@@ -676,5 +702,16 @@ public class ProyectoJefryHernandez {
             System.out.println("");
 
         }
+    }
+
+    public static boolean isNumeric(String cadena, String dos) {
+        try {
+            Integer.parseInt(cadena);
+            Integer.parseInt(dos);            
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+
     }
 }
