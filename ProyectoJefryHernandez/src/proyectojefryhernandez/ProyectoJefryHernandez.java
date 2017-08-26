@@ -316,7 +316,7 @@ public class ProyectoJefryHernandez {
                                         if (tablero[x1][y1 + 1] instanceof Pieza) {
                                             if ((tablero[x1][y1 + 1] instanceof Rey)) {
                                                 Pieza t = (Pieza) tablero[x1][y1 + 1];
-                                                if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
+                                                    if (t.capturar(t, x1, y1, x1, y1 + 1, tablero)) {
                                                     tablero[x1][y1 + 1] = " ";
                                                     jugador1 = true;
                                                 }
